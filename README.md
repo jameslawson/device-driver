@@ -38,6 +38,17 @@ To check if the driver is currently loaded, you can check the `/proc/modules` fi
 cat /proc/modules | grep jjl
 ```
 
+To check if the driver has registered a device number:
+```
+cat /proc/devices | grep jjl
+```
+
+To check if the driver has a device file:
+```
+ls /dev/jjl
+```
+
+
 To check if the driver loaded succesfully, you can check the logs for a success message:
 ```
 dmesg | grep "jjl"
