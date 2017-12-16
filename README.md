@@ -4,6 +4,46 @@ Experimenting with Linux Kernel Development
 
 ## Development
 
+Requirements:
+- An OSX / macOS machine with Centos6 running on VirtualBox
+- Version 2.6 of the Linux Kernel on Centos6
+
+To **compile the source**:
+
+```bash
+## On OSX (host machine)
+cd <project-root>
+scp -P 3022 * root@localhost:~
+
+## ssh to Centos 6 (guest machine) then compile
+ssh -p 3022 root@localhost
+make
+```
+
+To **load the device driver** into memory:
+```bash
+insmod jjl_driver.ko
+```
+
+To **unload the device driver** from memory:
+```bash
+rmmod jjl_driver
+```
+
+### Debugging
+
+
+To check if the driver is currently loaded, you can check the `/proc/modules` file
+```
+cat /proc/modules | grep jjl
+```
+
+To check if the driver loaded succesfully, you can check the logs for a success message:
+```
+dmesg | grep "jjl"
+> [jjl] Loading Module 'jjl_driver' ...
+> [jjl] Inserted Module 'jjl_driver'
+```
 
 ### Using Centos6 in OSX
 
@@ -47,43 +87,4 @@ were written for v2 (and this is the kernel version Centos v6 uses)
   and that will be forwarded to the ssh server on Centos 6 listening on port 22 (the well known port for ssh
   where Centos 6's ssh server will be listening).
 
-
-### Running
-
-
-To **compile the source**:
-
-```bash
-## On OSX (host machine)
-cd <project-root>
-scp -P 3022 * root@localhost:~
-
-## ssh to Centos 6 (guest machine) then compile
-ssh -p 3022 root@localhost
-make
-```
-
-To **load the device driver** into memory:
-```bash
-insmod jjl_driver.ko
-```
-
-To **unload the device driver** from memory:
-```bash
-rmmod jjl_driver
-```
-
-### Debugging
-
-
-To check if the driver is currently loaded, you can check the `/proc/modules` file
-```
-cat /proc/modules | grep jjl
-```
-
-To check if the driver loaded succesfully, you can check the logs for a success message:
-```
-dmesg | grep "jjl"
-> [jjl] Loading Module 'jjl_driver' ...
-> [jjl] Inserted Module 'jjl_driver'
-```
+- **Setting up SSH**
