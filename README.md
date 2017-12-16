@@ -22,7 +22,8 @@ make
 
 To **load the device driver** into memory:
 ```bash
-insmod jjl_driver.ko
+chmod u+x ./load_driver.sh
+./load_driver.sh
 ```
 
 To **unload the device driver** from memory:
@@ -33,7 +34,7 @@ rmmod jjl_driver
 ### Debugging
 
 
-To check if the driver is currently loaded, you can check the `/proc/modules` file
+To check if the driver is currently loaded:
 ```
 cat /proc/modules | grep jjl
 ```
