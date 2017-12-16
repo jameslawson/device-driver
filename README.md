@@ -65,7 +65,7 @@ make
 
 To **load the device driver** into memory:
 ```bash
-insmod jjl_device.ko
+insmod jjl_driver.ko
 ```
 
 To **unload the device driver** from memory:
