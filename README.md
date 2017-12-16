@@ -4,6 +4,57 @@ Experimenting with Linux Kernel Development
 
 ## Development
 
+Requirements:
+- An OSX / macOS machine with Centos6 running on VirtualBox
+- Version 2.6 of the Linux Kernel on Centos6
+
+To **compile the source**:
+
+```bash
+## On OSX (host machine)
+cd <project-root>
+scp -P 3022 * root@localhost:~
+
+## ssh to Centos 6 (guest machine) then compile
+ssh -p 3022 root@localhost
+make
+```
+
+To **load the device driver** into memory:
+```bash
+chmod u+x ./load_driver.sh
+./load_driver.sh
+```
+
+To **unload the device driver** from memory:
+```bash
+rmmod jjl_driver
+```
+
+### Debugging
+
+
+To check if the driver is currently loaded:
+```
+cat /proc/modules | grep jjl
+```
+
+To check if the driver has registered a device number:
+```
+cat /proc/devices | grep jjl
+```
+
+To check if the driver has a device file:
+```
+ls /dev/jjl
+```
+
+To check the debugging logs:
+```
+dmesg | grep "jjl"
+> [jjl] Loading Module 'jjl_driver' ...
+> [jjl] Inserted Module 'jjl_driver'
+```
 
 ### Using Centos6 in OSX
 
@@ -47,43 +98,14 @@ were written for v2 (and this is the kernel version Centos v6 uses)
   and that will be forwarded to the ssh server on Centos 6 listening on port 22 (the well known port for ssh
   where Centos 6's ssh server will be listening).
 
-
-### Running
-
-
-To **compile the source**:
-
-```bash
-## On OSX (host machine)
-cd <project-root>
-scp -P 3022 * root@localhost:~
-
-## ssh to Centos 6 (guest machine) then compile
-ssh -p 3022 root@localhost
-make
-```
-
-To **load the device driver** into memory:
-```bash
-insmod jjl_driver.ko
-```
-
-To **unload the device driver** from memory:
-```bash
-rmmod jjl_driver
-```
-
-### Debugging
-
-
-To check if the driver is currently loaded, you can check the `/proc/modules` file
-```
-cat /proc/modules | grep jjl
-```
-
-To check if the driver loaded succesfully, you can check the logs for a success message:
-```
-dmesg | grep "jjl"
-> [jjl] Loading Module 'jjl_driver' ...
-> [jjl] Inserted Module 'jjl_driver'
-```
+- **Removing Passwords for SSH**: Typing your root passport for Centos6 over and over again is annoying and slows down development.
+To [speed things up](https://serverfault.com/questions/241588/how-to-automate-ssh-login-with-password), 
+we'll use an RSA keypair for authentication.
+    ```
+    ssh-keygen
+    brew install ssh-copy-id
+    ssh-copy-id -p 3022 root@localhosh
+    ssh -p 3022 root@localhost  # no longer asks for password
+    ```
+    The `ssh-copy-id` command will copy your public key to the Centos6 server. From now on, when you login 
+    with `ssh -p 3022 root@localhost` you will not be asked for a password and instead use you RSA keypair for authentication.
