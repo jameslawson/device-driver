@@ -15,19 +15,21 @@ To **compile the source**:
 cd <project-root>
 scp -P 3022 * root@localhost:~
 
-## ssh to Centos 6 (guest machine) then compile
+## ssh to Centos6 (guest machine) then compile
 ssh -p 3022 root@localhost
 make
 ```
 
 To **load the device driver** into memory:
 ```bash
+## On Centos6 (guest machine)
 chmod u+x ./load_driver.sh
 ./load_driver.sh
 ```
 
 To **unload the device driver** from memory:
 ```bash
+## On Centos6 (guest machine)
 rmmod jjl_driver
 ```
 
