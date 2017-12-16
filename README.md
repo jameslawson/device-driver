@@ -87,4 +87,14 @@ were written for v2 (and this is the kernel version Centos v6 uses)
   and that will be forwarded to the ssh server on Centos 6 listening on port 22 (the well known port for ssh
   where Centos 6's ssh server will be listening).
 
-- **Setting up SSH**
+- **Removing Passwords for SSH**: Typing your root passport for Centos6 over and over again is annoying and slows down development.
+To [speed things up](https://serverfault.com/questions/241588/how-to-automate-ssh-login-with-password), 
+we'll use an RSA keypair for authentication.
+    ```
+    ssh-keygen
+    brew install ssh-copy-id
+    ssh-copy-id -p 3022 root@localhosh
+    ssh -p 3022 root@localhost  # no longer asks for password
+    ```
+    The `ssh-copy-id` command will copy your public key to the Centos6 server. From now on, when you login 
+    with `ssh -p 3022 root@localhost` you will not be asked for a password and instead use you RSA keypair for authentication.
