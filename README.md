@@ -5,7 +5,7 @@ Experimenting with Linux Kernel Development
 ## Development
 
 Requirements:
-- An OSX / macOS machine with Centos6 running on VirtualBox
+- An OSX / macOS machine with Centos6 running on VirtualBox ([see below](https://github.com/jameslawson/device-driver#using-centos6-in-osx))
 - Version 2.6 of the Linux Kernel on Centos6
 
 > :information_source: Assume all commands are to be executed on the Centos6 (guest) machine unless otherwise specified
@@ -94,7 +94,7 @@ were written for v2 (and this is the kernel version Centos v6 uses)
   sudo yum install build-essential
   ln -s /usr/src/kernels/$(uname -r)/ /lib/modules/$(uname -r)/build
   ```
-- **Enable port forwarding for ssh** Run Centos 6. Then In VirtualBox, in Device -> Network -> *Network Settings*, click
+- **Enable port forwarding for SSH** Run Centos 6. Then In VirtualBox, in Device -> Network -> *Network Settings*, click
   *Port Forwaring* and add a new row that forwards Host Port 3022 to Guest Port 22. The result is that when we can now
   run `ssh` and `scp` specifying port 3022 (arbitrarily chosen port) on OSX 
   and that will be forwarded to the ssh server on Centos 6 listening on port 22 (the well known port for ssh
@@ -110,4 +110,4 @@ we'll use an RSA keypair for authentication.
     ssh -p 3022 root@localhost  # no longer asks for password
     ```
     The `ssh-copy-id` command will copy your public key to the Centos6 server. From now on, when you login 
-    with `ssh -p 3022 root@localhost` you will not be asked for a password and instead use you RSA keypair for authentication.
+    with `ssh -p 3022 root@localhost` you will not be asked for a password and instead use your RSA keypair for authentication.
