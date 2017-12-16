@@ -30,7 +30,8 @@ chmod u+x ./load_driver.sh
 
 To **unload the device driver** from memory:
 ```bash
-rmmod jjl_driver
+chmod u+x ./unload_driver.sh
+./unload_driver.sh
 ```
 
 ### Debugging
