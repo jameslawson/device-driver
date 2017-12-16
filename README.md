@@ -67,10 +67,10 @@ and do all compilation and running there instead.
    
 Setting up Centos 6 with Virtual Box on OSX:
 
-- **Create the Guest Image** Download the Centos 6 (minimal) ISO. Install Virtual Box and create a Centos 6 virutal machine using default settings. During the setup, take note of the passport you chose for `root` as you'll need it later for ssh and scp commands.
+- **Create the Guest Image**: Download the Centos 6 (minimal) ISO. Install Virtual Box and create a Centos 6 virutal machine using default settings. During the setup, take note of the passport you chose for `root` as you'll need it later for ssh and scp commands.
 I avoided using Centos 7 because this use v3 of the Linux Kernel most books/literature about kernel development 
 were written for v2 (and this is the kernel version Centos v6 uses)
-- **Connect the Guest to the Internet** Ensure *Connect Network Adapter* is enabled. By default, Centos 6 does not connect the `eth` interfaces by default. So when you run `ifconfig` you'll only see the loopback interface. To fix this, modify (or create) `/etc/sysconfig/network-scripts/ifcfg-eth0` so that it contains at minimum the following:
+- **Connect the Guest to the Internet**: Ensure *Connect Network Adapter* is enabled. By default, Centos 6 does not connect the `eth` interfaces by default. So when you run `ifconfig` you'll only see the loopback interface. To fix this, modify (or create) `/etc/sysconfig/network-scripts/ifcfg-eth0` so that it contains at minimum the following:
   ```
   DEVICE="eth0"
   ONBOOT="yes"
@@ -95,7 +95,7 @@ were written for v2 (and this is the kernel version Centos v6 uses)
   sudo yum install build-essential
   ln -s /usr/src/kernels/$(uname -r)/ /lib/modules/$(uname -r)/build
   ```
-- **Enable port forwarding for SSH** Run Centos 6. Then In VirtualBox, in Device -> Network -> *Network Settings*, click
+- **Enable port forwarding for SSH**: Run Centos 6. Then In VirtualBox, in Device -> Network -> *Network Settings*, click
   *Port Forwaring* and add a new row that forwards Host Port 3022 to Guest Port 22. The result is that when we can now
   run `ssh` and `scp` specifying port 3022 (arbitrarily chosen port) on OSX 
   and that will be forwarded to the ssh server on Centos 6 listening on port 22 (the well known port for ssh
