@@ -48,8 +48,7 @@ To check if the driver has a device file:
 ls /dev/jjl
 ```
 
-
-To check if the driver loaded succesfully, you can check the logs for a success message:
+To check the debugging logs:
 ```
 dmesg | grep "jjl"
 > [jjl] Loading Module 'jjl_driver' ...
