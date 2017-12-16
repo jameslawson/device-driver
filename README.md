@@ -2,7 +2,10 @@
 Experimenting with Linux Kernel Development
 
 
-### Development
+## Development
+
+
+### Using Centos6 in OSX
 
 We can't compile the files on OSX, nor can we actually run 
 the device driver on OSX. We'll copy files from OSX to **Centos 6** (an OS with the Linux Kernel)
@@ -45,10 +48,8 @@ were written for v2 (and this is the kernel version Centos v6 uses)
   where Centos 6's ssh server will be listening).
 
 
-To **ssh onto Centos 6**:
-```bash
-ssh -p 3022 root@localhost
-```
+### Running
+
 
 To **compile the source**:
 
@@ -66,9 +67,23 @@ To **load the device driver** into memory:
 ```bash
 insmod jjl_device.ko
 ```
+
+To **unload the device driver** from memory:
+```bash
+rmmod jjl_driver
+```
+
+### Debugging
+
+
+To check if the driver is currently loaded, you can check the `/proc/modules` file
+```
+cat /proc/modules | grep jjl
+```
+
 To check if the driver loaded succesfully, you can check the logs for a success message:
 ```
 dmesg | grep "jjl"
-> Loading Module 'jjl_driver' ...
-> Inserted Module 'jjl_driver'
+> [jjl] Loading Module 'jjl_driver' ...
+> [jjl] Inserted Module 'jjl_driver'
 ```
