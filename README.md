@@ -8,11 +8,9 @@ Requirements:
 - [Oracle VM VirtualBox](https://www.virtualbox.org/) v5+ 
 - A guest operating system with version 2.6 of the Linux Kernel
 
-We'll assume the environment is an macOS / OSX machine with CentOS 6 running on VirtualBox 
-
 Assuming:
-- you have CentOS 6 running in VirtualBox (as per [the instructions below](https://github.com/jameslawson/device-driver#using-centos-6-on-macos))
-- all commands executed on the guest CentOS 6 machine (unless otherwise specified)
+- the environment is an macOS / OSX machine with CentOS 6 running on VirtualBox (as per [the instructions below](https://github.com/jameslawson/device-driver#using-centos-6-on-macos))
+- that all the below commands are executed on the guest CentOS 6 machine (unless otherwise specified)
 
 To **compile the source**:
 
