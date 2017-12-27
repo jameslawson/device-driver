@@ -111,7 +111,7 @@ we'll use an RSA keypair for authentication.
     ```
     ssh-keygen
     brew install ssh-copy-id
-    ssh-copy-id -p 3022 root@localhosh
+    ssh-copy-id -p 3022 root@localhost
     ssh -p 3022 root@localhost  # no longer asks for password
     ```
     The `ssh-copy-id` command will copy your public key to the CentOS server. From now on, when you login 
