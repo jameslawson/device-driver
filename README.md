@@ -107,9 +107,9 @@ are currently written for v2 (which is incidentally the kernel version Centos v6
 
 - **Removing Passwords for SSH**: Typing your root passport for CentOS over and over again is annoying and slows down the development cycle.
 To [speed things up](https://serverfault.com/questions/241588/how-to-automate-ssh-login-with-password), 
-we'll use an RSA keypair for authentication.
+we'll use an [RSA keypair](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) for authentication.
     ```
-    ssh-keygen
+    ssh-keygen     # don't run this if you already have a ~/.ssh/id_rsa.pub file
     brew install ssh-copy-id
     ssh-copy-id -p 3022 root@localhost
     ssh -p 3022 root@localhost  # no longer asks for password
