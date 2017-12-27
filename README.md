@@ -6,11 +6,13 @@ Experimenting with Linux Kernel Development
 
 Requirements:
 - [Oracle VM VirtualBox](https://www.virtualbox.org/) v5+ 
-- Version 2.6 of the Linux Kernel
+- A guest operating system with version 2.6 of the Linux Kernel
 
-We'll assume the environment is an macOS / OSX machine with CentOS 6 running on VirtualBox ([see below](https://github.com/jameslawson/device-driver#using-centos-6-on-macos))
+We'll assume the environment is an macOS / OSX machine with CentOS 6 running on VirtualBox 
 
-> :information_source: Assume all commands are to be executed on the CentOS (guest) machine unless otherwise specified
+Assuming:
+- you have CentOS 6 running in VirtualBox (as per [the instructions below](https://github.com/jameslawson/device-driver#using-centos-6-on-macos))
+- all commands executed on the guest CentOS 6 machine (unless otherwise specified)
 
 To **compile the source**:
 
