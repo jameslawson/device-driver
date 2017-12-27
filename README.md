@@ -8,7 +8,7 @@ Requirements:
 - [Oracle VM VirtualBox](https://www.virtualbox.org/) v5+ 
 - Version 2.6 of the Linux Kernel
 
-We'll assume the environment is an macOS / OSX machine with CentOS 6 running on VirtualBox ([see below](https://github.com/jameslawson/device-driver#using-centos6-in-osx))
+We'll assume the environment is an macOS / OSX machine with CentOS 6 running on VirtualBox ([see below](https://github.com/jameslawson/device-driver#using-centos-6-on-macos))
 
 > :information_source: Assume all commands are to be executed on the CentOS (guest) machine unless otherwise specified
 
@@ -99,7 +99,7 @@ are currently written for v2 (which is incidentally the kernel version Centos v6
   sudo yum install build-essential
   ln -s /usr/src/kernels/$(uname -r)/ /lib/modules/$(uname -r)/build
   ```
-- **Enable port forwarding for SSH**: While run CentOS 6 is running in VirtualBox, go to Device -> Network -> *Network Settings*, click
+- **Enable port forwarding for SSH**: While CentOS 6 is running in VirtualBox, go to Device -> Network -> *Network Settings*, click
   *Port Forwaring* and add a new row that forwards Host Port 3022 to Guest Port 22. The result is that when we can now
   run `ssh` and `scp` specifying port 3022 (arbitrarily chosen port) on OSX 
   and that will be forwarded to the ssh server on Centos 6 listening on port 22 (the [well known port](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports) for ssh
